@@ -3,10 +3,24 @@ import math
 
 
 class Circle:
+    """A Circle object
+    Normal case: adds circles with radii 3 and 4, result has radii 5.
+    >>> c1 = Circle(3)
+    >>> c2 = Circle(4)
+    >>> c3 = c2.add_area(c1)
+    >>> c3.get_radius()
+    5.0
+
+    Illegal case: create a circle with negative radius.
+    >>> Circle(-2)
+    Traceback (most recent call last):
+        ...
+    ValueError: radius must be non-negative
+    """
 
     def __init__(self, radius):
         """Initialize a circle with given radius.
-        
+
         :param radius: radius of the circle, may be zero.
         :raises ValueError: if radius is negative.
         """
@@ -30,12 +44,12 @@ class Circle:
         return Circle(r)
 
     def get_area(self) -> float:
-        return math.pi*self.radius*self.radius
-    
+        return math.pi * self.radius * self.radius
+
     def get_radius(self) -> float:
         return self.radius
 
     def __str__(self) -> str:
         return f"Circle({self.radius})"
-    
+
     __repr__ = __str__
