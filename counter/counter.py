@@ -11,6 +11,14 @@
 
 
 class Counter:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        """Allocate memory and return a reference to a new Person object"""
+        if cls._instance:
+            return cls._instance
+        cls._instance = super().__new__(cls)
+        return cls._instance
 
     def __init__(self):
         self.__count = 0

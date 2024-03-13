@@ -13,4 +13,9 @@ from counter import Counter
 
 
 class TestCounter(unittest.TestCase):
-    """T"""
+    """Test for singleton counter"""
+    def test_count_object_is_singleton(self):
+        """Test for a count's object is always the same when it's called"""
+        c1 = Counter()
+        c2 = Counter()
+        self.assertEqual(id(c1), id(c2))
