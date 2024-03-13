@@ -17,7 +17,7 @@ class Counter:
         """Allocate memory and return a reference to a new Person object"""
         if cls._instance:
             return cls._instance
-        cls._instance = super().__new__(cls)
+        cls._instance = super().__new__(cls, *args, **kwargs)
         return cls._instance
 
     def __init__(self):
@@ -33,4 +33,5 @@ class Counter:
 
     def increment(self):
         """Add 1 and return the new count"""
-        return self.__count + 1
+        self.__count += 1
+        return self.count
