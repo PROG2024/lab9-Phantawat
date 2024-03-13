@@ -33,7 +33,7 @@ class TestCounter(unittest.TestCase):
         self.assertEqual(self.c1.count, 1)
 
     def test_both_increment(self):
-        """Test for c1 and c2 are increment"""
+        """Test for both c1 and c2 are increment"""
         self.assertEqual(self.c1.count, self.c2.count)
         self.c1.increment()
         self.assertEqual(self.c1.count, 1)
@@ -42,3 +42,10 @@ class TestCounter(unittest.TestCase):
         self.assertEqual(self.c1.count, 2)
         self.assertEqual(self.c2.count, 2)
         self.assertEqual(self.c1, self.c2)
+
+    def test_create_object_after_increment(self):
+        """Test for edge case: Counter object is created after increment"""
+        a = Counter()
+        a.increment()
+        b = Counter()
+        self.assertEqual(b.count, 1)
